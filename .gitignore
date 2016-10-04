@@ -1,0 +1,6 @@
+# exclude reports folder
+reports
+
+# system
+.DS_Store
+
