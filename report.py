@@ -19,7 +19,7 @@ class Info():
         self.start_date = kwargs.get('start_date')
         self.last_date = kwargs.get('last_date')
         self.branch = kwargs.get('branch')
-        self.author_name = kwargs.get('authore_name')
+        self.author_name = kwargs.get('author_name')
         self.username = kwargs.get('username')
         self.password = kwargs.get('password')
 
@@ -45,10 +45,10 @@ class Info():
             full_url = url.format(self.repo_owner, self.repo_name) + params
 
         req = urllib.request.Request(full_url)
-        string = '%s:%s' % (self.username, self.password)
-        bebo = string.encode('utf-8')
+        auth_string = '%s:%s' % (self.username, self.password)
+        encoded_auth = auth_string.encode('utf-8')
 
-        req.add_header('Authorization', 'Basic ' + base64.urlsafe_b64encode(bebo).decode('utf-8'))
+        req.add_header('Authorization', 'Basic ' + base64.urlsafe_b64encode(encoded_auth).decode('utf-8'))
         req.add_header('Content-Type', 'application/json')
         req.add_header('Accept', 'application/json')
         resp = urllib.request.urlopen(req)
